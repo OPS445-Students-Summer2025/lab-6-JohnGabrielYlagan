@@ -9,10 +9,9 @@ class Student:
         self.number = str(number) # incase of number type error
         self.courses = {}
 
-    # Display student name and number
+    # Return the student name and number
     def displayStudent(self):
-        print('Student Name: ' + self.name)
-        print('Student Number: ' + self.number)
+        return 'Student Name: ' + self.name + '\n' + 'Student Number: ' + self.number
 
     # Add a new course and grade to students record
     def addGrade(self, course, grade):
@@ -20,10 +19,14 @@ class Student:
 
     # Calculate the grade point average of all courses and display it
     def displayGPA(self):
-        gpa = 0.0
-        for course in self.courses.keys():
+         if len(self.courses) == 0:
+            return 'GPA of student ' + self.name + ' is 0.0'
+            # if theres no grade, default show 0.0
+         gpa = 0.0
+
+         for course in self.courses.keys():
             gpa = gpa + self.courses[course]
-        print('GPA of student ' + self.name + ' is ' + str(gpa / len(self.courses)))
+            return('GPA of student ' + self.name + ' is ' + str(gpa / len(self.courses)))
 
 
 # Main code block
