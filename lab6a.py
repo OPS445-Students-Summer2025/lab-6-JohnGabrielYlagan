@@ -19,15 +19,24 @@ class Student:
 
     # Calculate the grade point average of all courses and display it
     def displayGPA(self):
-         if len(self.courses) == 0:
+        if len(self.courses) == 0:
             return 'GPA of student ' + self.name + ' is 0.0'
-            # if theres no grade, default show 0.0
-         gpa = 0.0
+        # if there's no grade, default show 0.0
 
-         for course in self.courses.keys():
-            gpa = gpa + self.courses[course]
-            return('GPA of student ' + self.name + ' is ' + str(gpa / len(self.courses)))
+        gpa = 0.0
+        for course in self.courses.keys():
+            gpa += self.courses[course]
 
+        return 'GPA of student ' + self.name + ' is ' + str(gpa / len(self.courses))
+
+
+    # Return a list of the student's passed courses (not 0.0 grade)
+    def displayCourses(self):
+        passed_courses = []
+        for course, grade in self.courses.items():
+            if grade > 0.0:
+                passed_courses.append(course)
+        return passed_courses
 
 # Main code block
 if __name__ == '__main__':
